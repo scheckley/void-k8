@@ -1,5 +1,5 @@
 # Use a base image for Void Linux
-FROM voidlinux/voidlinux-base:latest
+FROM ghcr.io/void-linux/void-glibc:latest
 
 # Set a non-root user
 USER root
