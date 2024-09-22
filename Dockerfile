@@ -1,16 +1,16 @@
 # Use a base image for Void Linux
 FROM ghcr.io/void-linux/void-glibc:latest
 
-# Set a non-root user
+# Set root user to install packages
 USER root
 
-# Install necessary packages for SSH and Void Linux setup
+# Install necessary packages for SSH, user management, and Void Linux setup
 RUN xbps-install -Syu && \
-    xbps-install -y openssh void-repo-nonfree && \
+    xbps-install -y openssh shadow void-repo-nonfree && \
     xbps-install -Syu && \
     rm -rf /var/cache/xbps/*
 
-# Create a non-root user
+# Create a non-root user with sudo privileges
 RUN useradd -m -s /bin/bash containeruser && \
     echo 'containeruser ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
