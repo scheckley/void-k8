@@ -7,5 +7,5 @@ if [ -z "$PASSWORD" ]; then
 fi
 
 # Update containeruser's password
-echo "voiduser:$PASSWORD" | sudo chpasswd
+echo "containeruser:$PASSWORD" | sudo chpasswd
 
